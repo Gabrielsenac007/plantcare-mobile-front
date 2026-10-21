@@ -17,7 +17,6 @@ npx expo start
 - [Guia completo do mobile e Expo Go](README-PLANTCARE-MOBILE.md)
 - [Backend e configuração](docs/README-PLANTCARE-BACKEND.md)
 - [Checklist](docs/CHECKLIST.md)
-- [Validação](docs/VALIDACAO.md)
 
 Câmera, permissões, notificações, localização e layout em aparelho precisam da verificação manual descrita no guia; geração de bundle não substitui essa etapa.
 
