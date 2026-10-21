@@ -1,0 +1,25 @@
+{
+  "passed": 7,
+  "checks": [
+    "cadastro, login e /auth/me com os serviços do mobile",
+    "DTOs, outdoor, busca combinada, contadores e dashboard",
+    "Reguei por PUT, edição e bloqueio de categoria com plantas",
+    "multipart real, URL absoluta pública, persistência, substituição e limite de 5 MB",
+    "isolamento de duas contas e 404 em leitura, escrita, associação e foto alheias",
+    "exclusão remove arquivo e libera categoria",
+    "401 executa a limpeza de sessão pelo interceptor do mobile"
+  ],
+  "serviceHashes": {
+    "api.ts": "e7f9889fec7a60484b91f06185e37b8bf3d2693c664e61c6224661c3e2df5312",
+    "authService.ts": "acec399152008c1d518bdebebcb5cec37c495671ef95ee110d7313c6cd8af687",
+    "plantService.ts": "598ccc064ecefad31d4631cfb6a2b4d6104f2f7b4a5d20a539aaa453774274e0",
+    "categoryService.ts": "73ac45fdc48b50d38eda4ea4506985ab4269d29910968b67db2a9f113c2c7ce9"
+  },
+  "transport": "HTTP real",
+  "backend": "http://127.0.0.1:18080/api",
+  "mysqlVersion": "8.0.46-0ubuntu0.24.04.3",
+  "backendRestartPersistence": "passed",
+  "photoRestartPersistence": "passed",
+  "legacyImport": "passed",
+  "legacyNonEmptyGuard": "passed"
+}

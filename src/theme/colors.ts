@@ -1,0 +1,16 @@
+export const colors = {
+  background: "#F1F8EA",
+  secondary: "#DDEEC9",
+  border: "#CFE3BC",
+  details: "#6FAE3E",
+  primary: "#3B7D1E",
+  title: "#27500A",
+  white: "#FFFFFF",
+  text: "#344238",
+  muted: "#626D65",
+  amber: "#854D0E",
+  amberBg: "#FEF3C7",
+  red: "#991B1B",
+  redBg: "#FEE2E2",
+  gray: "#F1F3F2",
+} as const;

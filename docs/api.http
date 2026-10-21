@@ -1,0 +1,81 @@
+# Requisições para o backend completo deste pacote. Configure banco/segredo e inicie primeiro.
+# Extensão REST Client do VS Code pode usar estas variáveis.
+@base = http://localhost:8080/api
+@token = PREENCHA_COM_TOKEN_DA_RESPOSTA
+@categoryId = 1
+@plantId = 1
+
+### Cadastro
+POST {{base}}/auth/register
+Content-Type: application/json
+
+{"name":"Pessoa de Teste","email":"teste@example.com","password":"senha-teste-123"}
+
+### Login
+POST {{base}}/auth/login
+Content-Type: application/json
+
+{"email":"teste@example.com","password":"senha-teste-123"}
+
+### Sessão
+GET {{base}}/auth/me
+Authorization: Bearer {{token}}
+
+### Criar categoria (guardar ID retornado)
+POST {{base}}/categories
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"name":"Interior"}
+
+### Plantas filtradas
+GET {{base}}/plants?name=Monstera&categoryId={{categoryId}}
+Authorization: Bearer {{token}}
+
+### Criar planta; lastWatering null não depende da data atual
+POST {{base}}/plants
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"name":"Monstera","species":"Monstera deliciosa","location":"Sala","wateringFrequency":7,"lastWatering":null,"sunlight":"Luz indireta","notes":"Evitar sol direto","imageUrl":null,"categoryId":{{categoryId}},"outdoor":false}
+
+### Detalhe
+GET {{base}}/plants/{{plantId}}
+Authorization: Bearer {{token}}
+
+### Dashboard
+GET {{base}}/plants/dashboard
+Authorization: Bearer {{token}}
+
+### Editar planta
+PUT {{base}}/plants/{{plantId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"name":"Monstera editada","species":"Monstera deliciosa","location":"Varanda","wateringFrequency":5,"lastWatering":null,"sunlight":"Luz indireta","notes":null,"imageUrl":null,"categoryId":{{categoryId}},"outdoor":true}
+
+### Editar categoria
+PUT {{base}}/categories/{{categoryId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"name":"Folhagens"}
+
+### Categoria com planta deve recusar exclusão
+DELETE {{base}}/categories/{{categoryId}}
+Authorization: Bearer {{token}}
+
+### Sem token deve retornar 401 ApiError
+GET {{base}}/plants
+
+### Depois do teste, excluir planta e categoria
+DELETE {{base}}/plants/{{plantId}}
+Authorization: Bearer {{token}}
+
+### Categoria vazia
+DELETE {{base}}/categories/{{categoryId}}
+Authorization: Bearer {{token}}
+
+# Upload (terminal, substitua TOKEN/ID e caminho):
+# curl -X POST http://localhost:8080/api/plants/ID/photo -H "Authorization: Bearer TOKEN" -F "file=@foto.jpg;type=image/jpeg"
+# Usar token da segunda conta no detalhe/PUT/DELETE/upload de ID da primeira deve retornar 404.
